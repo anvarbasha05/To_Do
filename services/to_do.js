@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import Todo from "../models/to_do.js";
+import {sendNotification} from "../socket.js"
 
 const { Types } = mongoose;
 
@@ -12,6 +13,7 @@ export const createToDo = async (params) => {
     }
 
     const result = await Todo.create(data);
+    sendNotification({ event: "todo_created", data:{message:"To do Created Successfully"}});
 
     return {
       insertedCount: 1,
@@ -93,6 +95,7 @@ export const updateToDoById = async (params) => {
         },
       },
     );
+    sendNotification({ event: "todo_updated", data:{message:"To do updated Successfully"}});
 
     return {
       modified: result.modifiedCount > 0,
@@ -120,6 +123,7 @@ export const DeleteToDoById = async (params) => {
         },
       },
     );
+     sendNotification({ event: "todo_deleted", data:{message:"To do deleted Successfully"}});
 
     return {
       modified: result.modifiedCount > 0,
