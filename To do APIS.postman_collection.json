@@ -1,0 +1,235 @@
+{
+  "info": {
+    "_postman_id": "818ae688-9c71-4851-ba20-523e49a77c99",
+    "name": "To do APIS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36748221"
+  },
+  "item": [
+    {
+      "name": "To do create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Complete backend technical task\",\r\n  \"description\": \"Implement CRUD with JWT, validation, sorting and websocket notification\",\r\n  \"completed\": false,\r\n  \"priority\": \"high\",\r\n  \"status\": \"in-progress\",\r\n  \"dueDate\": \"2026-03-10T10:00:00.000Z\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/todo/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "todo",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "User Sign Up",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Complete backend technical task\",\r\n  \"description\": \"Implement CRUD with JWT, validation, sorting and websocket notification\",\r\n  \"completed\": false,\r\n  \"priority\": \"high\",\r\n  \"status\": \"in-progress\",\r\n  \"dueDate\": \"2026-03-10T10:00:00.000Z\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/todo/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "todo",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "User login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n \"email\":\"anvarbasha@gmail.com\",\r\n    \"password\":\"Anvar@123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/user/logiin",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "user",
+            "logiin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "To do update",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"priority\": \"low\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/todo/update_by_id/69a5d53a5755f9a3569232ce",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "todo",
+            "update_by_id",
+            "69a5d53a5755f9a3569232ce"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "To do delete",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"priority\": \"low\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/todo/update_by_id/69a5d53a5755f9a3569232ce",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "todo",
+            "update_by_id",
+            "69a5d53a5755f9a3569232ce"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get to do list",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Complete backend technical task\",\r\n  \"description\": \"Implement CRUD with JWT, validation, sorting and websocket notification\",\r\n  \"completed\": false,\r\n  \"priority\": \"high\",\r\n  \"status\": \"in-progress\",\r\n  \"dueDate\": \"2026-03-10T10:00:00.000Z\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/todo/get",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "todo",
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get to do",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Complete backend technical task\",\r\n  \"description\": \"Implement CRUD with JWT, validation, sorting and websocket notification\",\r\n  \"completed\": false,\r\n  \"priority\": \"high\",\r\n  \"status\": \"in-progress\",\r\n  \"dueDate\": \"2026-03-10T10:00:00.000Z\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/todo/get",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "v1",
+            "todo",
+            "get"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

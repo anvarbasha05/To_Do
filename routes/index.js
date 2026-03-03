@@ -1,9 +1,11 @@
 import express from 'express';
 import toDo from './to_do.js';
+import user from './auth.js'
 
 const router = express.Router();
 
 router.use('/toDo', toDo);
+router.use('/user', user);
 
 // Test route
 router.get('/', (req, res) => {

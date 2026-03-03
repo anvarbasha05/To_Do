@@ -2,8 +2,12 @@ import toDoServices from "../services/to_do.js";
 
 export const createToDo = async (req, res, next) => {
   try {
-    let params = {};
-    params.data = req.body;
+    const params = {
+      data: {
+        ...req.body,     
+        userId: req.user._id
+      }
+    };
 
     const list = await toDoServices.createToDo(params);
     res.status(200).json({
@@ -25,6 +29,8 @@ export const getToDos = async (req, res, next) => {
     params.priority =priority;
     params.completed =completed;
     params.limit =limit;
+    params.userId = req.user._id;
+  
 
     const list = await toDoServices.getToDos(params);
     res.status(200).json({
@@ -42,6 +48,7 @@ export const getToDo = async (req, res, next) => {
     const { id } = req.params;
     let params = {};
     params.id = id;
+    params.userId = req.user._id;
 
     const list = await toDoServices.getToDoById(params);
     res.status(200).json({
@@ -60,6 +67,7 @@ export const updateToDo = async (req, res, next) => {
     let params = {};
     params.id = id;
     params.data = req.body;
+    params.userId = req.user._id;
 
     const list = await toDoServices.updateToDoById(params);
     res.status(200).json({
@@ -76,6 +84,7 @@ export const deleteToDo = async (req, res, next) => {
     const { id } = req.params;
     let params = {};
     params.id = id;
+    params.userId = req.user._id;
 
     const list = await toDoServices.DeleteToDoById(params);
     res.status(200).json({

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import Todo from "../models/to_do.js";
-import {sendNotification} from "../socket.js"
+import {sendNotificationToUser} from "../socket.js"
 
 const { Types } = mongoose;
 
@@ -13,7 +13,7 @@ export const createToDo = async (params) => {
     }
 
     const result = await Todo.create(data);
-    sendNotification({ event: "todo_created", data:{message:"To do Created Successfully"}});
+    sendNotificationToUser(data.userId,{ event: "todo_created", data:{message:"To do Created Successfully"}});
 
     return {
       insertedCount: 1,
@@ -36,10 +36,12 @@ export const getToDos = async (params = {}) => {
       completed,
       page = 1,
       limit = 10,
+      userId
     } = params;
 
     const filter = {
       is_deleted: { $ne: true },
+      userId,
     };
 
     if (status) filter.status = status;
@@ -63,7 +65,7 @@ export const getToDos = async (params = {}) => {
 
 export const getToDoById = async (params) => {
   try {
-    let { id } = params;
+    let { id, userId } = params;
 
     if (!Types.ObjectId.isValid(id)) {
       throw new Error("Invalid ID format");
@@ -71,6 +73,7 @@ export const getToDoById = async (params) => {
 
     return await Todo.findOne({
       _id: id,
+      userId: userId,
       is_deleted: { $ne: true },
     });
   } catch (err) {
@@ -80,7 +83,7 @@ export const getToDoById = async (params) => {
 
 export const updateToDoById = async (params) => {
   try {
-    let { id, data } = params;
+    let { id, userId, data } = params;
 
     if (!Types.ObjectId.isValid(id)) {
       throw new Error("Invalid ID format");
@@ -95,7 +98,7 @@ export const updateToDoById = async (params) => {
         },
       },
     );
-    sendNotification({ event: "todo_updated", data:{message:"To do updated Successfully"}});
+    sendNotificationToUser(userId, { event: "todo_updated", data:{message:"To do updated Successfully"}});
 
     return {
       modified: result.modifiedCount > 0,
@@ -108,7 +111,7 @@ export const updateToDoById = async (params) => {
 
 export const DeleteToDoById = async (params) => {
   try {
-    let { id } = params;
+    let { id, userId } = params;
 
     if (!Types.ObjectId.isValid(id)) {
       throw new Error("Invalid ID format");
@@ -123,7 +126,7 @@ export const DeleteToDoById = async (params) => {
         },
       },
     );
-     sendNotification({ event: "todo_deleted", data:{message:"To do deleted Successfully"}});
+     sendNotificationToUser(userId, { event: "todo_deleted", data:{message:"To do deleted Successfully"}});
 
     return {
       modified: result.modifiedCount > 0,

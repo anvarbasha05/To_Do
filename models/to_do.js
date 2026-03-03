@@ -40,9 +40,16 @@ const todoSchema = new Schema(
     },
 
     is_deleted: {
-     type: Boolean,
-     default: false
-   }
+      type: Boolean,
+      default: false
+    },
+
+  
+    userId: {
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "User",                          
+      required: true
+    }
   },
   {
     timestamps: true,
@@ -51,7 +58,6 @@ const todoSchema = new Schema(
 );
 
 todoSchema.index({ updatedAt: -1 });
-;
 
 const Todo = model("Todo", todoSchema);
 
